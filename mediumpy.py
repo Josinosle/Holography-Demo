@@ -1,21 +1,12 @@
 import matplotlib.pyplot as plt
 
-class Medium:
+class medium:
     def __init__(self, x, y, z, n, l):
         self.x = x
         self.y = y
         self.z = z
         self.n = n
         self.l = l
-
-    def get_x(self):
-        return self.x
-
-    def get_y(self):
-        return self.y
-
-    def get_z(self):
-        return self.z
 
     def draw(self,axis):
         from mpl_toolkits.mplot3d.art3d import Poly3DCollection
@@ -43,5 +34,12 @@ class Medium:
         ]
 
         # Plotting the cube
-        axis.add_collection3d(Poly3DCollection(faces, facecolors='cyan', edgecolors='black', linewidths=1, alpha=0.5))
+        axis.add_collection3d(Poly3DCollection(faces, facecolors='cyan', edgecolors='black', linewidths=1, alpha=0.1))
+
+    def is_inside(self,x,y,z):
+        return(
+            self.x < x < self.x + self.l and
+            self.y < y < self.y + self.l and
+            self.z < z < self.z + self.l
+        )
 
